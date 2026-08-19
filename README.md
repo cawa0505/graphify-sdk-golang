@@ -12,7 +12,7 @@ knowledge graph capabilities over the MCP (Model Context Protocol) via Stdio/JSO
 ## Requirements
 
 - Go 1.22+
-- `graphify-mcp` binary on PATH (or configured path)
+- `graphify` binary on PATH (or configured path)
 
 ## Installation
 
@@ -78,7 +78,7 @@ func main() {
 
 ## API Reference
 
-The SDK wraps all 24+ `graphify-mcp` tools.
+The SDK wraps all 24+ `graphify` tools.
 
 ### Core Graph
 
@@ -139,13 +139,13 @@ The SDK wraps all 24+ `graphify-mcp` tools.
 ## Architecture
 
 ```
-Go App → GraphifyClient → Transport (Stdio/JSON-RPC) → graphify-mcp (Rust)
+Go App → GraphifyClient → Transport (Stdio/JSON-RPC) → graphify (Rust)
 ```
 
 - **Zero external dependencies**: uses only the Go standard library
 - **Synchronous API**: single-threaded, request-response over stdio
 - **Auto workspace key**: derives from project path (mirrors Rust crc32 logic)
-- **Lazy process start**: transport spawns `graphify-mcp` on first request
+- **Lazy process start**: transport spawns `graphify` on first request
 
 ## Project Structure
 

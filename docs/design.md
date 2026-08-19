@@ -43,7 +43,7 @@
 └──────────┬──────────────────────┘
            │ Stdio (stdin/stdout)
 ┌──────────▼──────────────────────┐
-│  graphify-mcp (Rust binary)      │
+│  graphify (Rust binary)      │
 └─────────────────────────────────┘
 ```
 
@@ -74,7 +74,7 @@ graphify-sdk-golang/
 ### Process Lifecycle
 
 ```go
-transport := NewTransport("graphify-mcp", 30*time.Second, "/path/to/project")
+transport := NewTransport("graphify", 30*time.Second, "/path/to/project")
 transport.Start()    // Spawns process, opens pipes
 // ... use ...
 transport.Stop()     // Closes pipes, terminates process
@@ -133,7 +133,7 @@ spawning for configuration-only code paths.
 
 ### Tool Method Mapping
 
-Every `graphify-mcp` tool maps to a public method (24 total):
+Every `graphify` tool maps to a public method (24 total):
 
 | Tool Name | Go Method | Returns |
 |-----------|-----------|---------|
@@ -306,7 +306,7 @@ external dependencies.
 GraphifyError (base)
 ├── TransportError    — Process spawn/pipe I/O errors
 ├── ProtocolError     — JSON-RPC parse/error response
-└── EngineError       — graphify-mcp returned error
+└── EngineError       — graphify returned error
     ├── Code          — JSON-RPC error code
     └── ErrorData     — Additional error context
 ```
@@ -342,7 +342,7 @@ GraphifyError (base)
 
 ## SDK Family Alignment
 
-All Graphify SDKs implement the same tool method set (based on `graphify-mcp`
+All Graphify SDKs implement the same tool method set (based on `graphify`
 tools), ensuring cross-language API consistency. The `graphify` package name
 and method signatures follow the same conventions as the PHP SDK:
 

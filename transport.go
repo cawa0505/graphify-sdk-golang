@@ -48,7 +48,7 @@ type MCPResult struct {
 	Extra   map[string]json.RawMessage `json:"-"`
 }
 
-// Transport manages the lifecycle of a graphify-mcp subprocess and provides
+// Transport manages the lifecycle of a graphify subprocess and provides
 // JSON-RPC 2.0 request/response over stdin/stdout pipes.
 //
 // Zero external dependencies: uses only the Go standard library (os/exec, encoding/json).
@@ -68,12 +68,12 @@ type Transport struct {
 
 // NewTransport creates a new MCP transport.
 //
-//   - binaryPath: path to the graphify-mcp binary (default: "graphify-mcp")
+//   - binaryPath: path to the graphify binary (default: "graphify")
 //   - timeout: I/O timeout (default: 30s)
 //   - cwd: working directory for the subprocess (optional)
 func NewTransport(binaryPath string, timeout time.Duration, cwd string) *Transport {
 	if binaryPath == "" {
-		binaryPath = "graphify-mcp"
+		binaryPath = "graphify"
 	}
 	if timeout <= 0 {
 		timeout = 30 * time.Second
@@ -85,7 +85,7 @@ func NewTransport(binaryPath string, timeout time.Duration, cwd string) *Transpo
 	}
 }
 
-// Start spawns the graphify-mcp subprocess. Idempotent — safe to call multiple times.
+// Start spawns the graphify subprocess. Idempotent — safe to call multiple times.
 func (t *Transport) Start() error {
 	t.mu.Lock()
 	defer t.mu.Unlock()
@@ -109,7 +109,7 @@ func (t *Transport) Start() error {
 	}
 
 	if err := cmd.Start(); err != nil {
-		return NewTransportError("spawn graphify-mcp: %w", err)
+		return NewTransportError("spawn graphify: %w", err)
 	}
 
 	t.cmd = cmd
@@ -225,7 +225,7 @@ func (t *Transport) readResponse() (map[string]any, error) {
 	return map[string]any{}, nil
 }
 
-// Stop terminates the graphify-mcp subprocess and cleans up pipes.
+// Stop terminates the graphify subprocess and cleans up pipes.
 func (t *Transport) Stop() {
 	t.mu.Lock()
 	defer t.mu.Unlock()

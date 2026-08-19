@@ -7,7 +7,7 @@ Graphify 官方 Go SDK：Layer 2 外部 SDK，讓 Go 生態的開發者
 
 - **屬於 Graphify SDK 家族**：與 `graphify-sdk-php`、`graphify-sdk-python` 平行。
 - **Layer 2 外部 SDK**：不是 plugin，不實作 `PluginInterface`；
-  透過 Stdio+JSON-RPC 與 `graphify-mcp` 通訊。
+  透過 Stdio+JSON-RPC 與 `graphify` 通訊。
 - **零外部依賴**：只使用 Go 標準函式庫（os/exec, encoding/json, hash/crc32, bufio）。
 - **資料契約**：與 graphify-core 共用，payload 透過 Stdio/JSON-RPC 交換。
 
@@ -51,7 +51,7 @@ graphify-sdk-golang/
 
 ## SDK 家族對齊
 
-所有 Graphify SDK 必須實現相同的工具方法集（基於 `graphify-mcp` 的所有 tools），
+所有 Graphify SDK 必須實現相同的工具方法集（基於 `graphify` 的所有 tools），
 確保跨語言 API 一致性。工具清單與 DTO 定義見 `docs/design.md`。
 
 ## 與 PHP SDK 的對應關係

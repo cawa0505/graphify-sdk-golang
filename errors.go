@@ -26,7 +26,7 @@ func NewProtocolError(format string, a ...any) *ProtocolError {
 	return &ProtocolError{GraphifyError{Msg: fmt.Sprintf("[Protocol] "+format, a...)}}
 }
 
-// EngineError is raised when graphify-mcp returns an engine-level error.
+// EngineError is raised when graphify returns an engine-level error.
 type EngineError struct {
 	GraphifyError
 	Code      int

@@ -51,11 +51,11 @@ derives a workspace key from the project path using crc32.
 func WithBinaryPath(path string) ClientOption
 ```
 
-Sets the path to the `graphify-mcp` binary. If not set, the SDK looks for
-`graphify-mcp` on the system PATH.
+Sets the path to the `graphify` binary. If not set, the SDK looks for
+`graphify` on the system PATH.
 
 ```go
-client := graphify.NewClient(".", graphify.WithBinaryPath("/usr/local/bin/graphify-mcp"))
+client := graphify.NewClient(".", graphify.WithBinaryPath("/usr/local/bin/graphify"))
 ```
 
 #### WithTimeout

@@ -1,7 +1,7 @@
 // Package types provides data transfer objects (DTOs) for the Graphify SDK.
 //
 // These types mirror the Rust structs in graphify_core and provide
-// JSON deserialization from graphify-mcp tool responses.
+// JSON deserialization from graphify tool responses.
 package types
 
 // ─── FileType ─────────────────────────────────────────────────────────────

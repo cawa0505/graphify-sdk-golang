@@ -11,7 +11,7 @@ import (
 
 // Client is the main Graphify Go SDK client interface.
 //
-// Provides access to all graphify-mcp tools over Stdio/JSON-RPC.
+// Provides access to all graphify tools over Stdio/JSON-RPC.
 // Auto-derives workspace_key from the project path.
 // Lazy initialization: the transport subprocess spawns on the first request.
 type Client struct {
@@ -24,7 +24,7 @@ type Client struct {
 // ClientOption configures the Graphify client.
 type ClientOption func(*Client)
 
-// WithBinaryPath sets the path to the graphify-mcp binary.
+// WithBinaryPath sets the path to the graphify binary.
 func WithBinaryPath(path string) ClientOption {
 	return func(c *Client) {
 		c.transport = NewTransport(path, 30*time.Second, c.projectPath)
@@ -34,7 +34,7 @@ func WithBinaryPath(path string) ClientOption {
 // WithTimeout sets the I/O timeout for MCP requests.
 func WithTimeout(timeout time.Duration) ClientOption {
 	return func(c *Client) {
-		c.transport = NewTransport("graphify-mcp", timeout, c.projectPath)
+		c.transport = NewTransport("graphify", timeout, c.projectPath)
 	}
 }
 
@@ -55,7 +55,7 @@ func NewClient(projectPath string, opts ...ClientOption) *Client {
 		projectPath:   projectPath,
 		workspaceKey:  deriveWorkspaceKey(projectPath),
 		workspaceName: filepath.Base(projectPath),
-		transport:     NewTransport("graphify-mcp", 30*time.Second, projectPath),
+		transport:     NewTransport("graphify", 30*time.Second, projectPath),
 	}
 
 	for _, opt := range opts {

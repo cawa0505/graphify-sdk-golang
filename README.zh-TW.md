@@ -11,7 +11,7 @@ Graphify 官方 Go SDK — 透過 MCP (Model Context Protocol) 經由 Stdio/JSON
 ## 系統需求
 
 - Go 1.22+
-- `graphify-mcp` 二進位檔需在 PATH 環境變數中（或可自訂路徑）
+- `graphify` 二進位檔需在 PATH 環境變數中（或可自訂路徑）
 
 ## 安裝
 
@@ -77,7 +77,7 @@ func main() {
 
 ## API 參考
 
-SDK 封裝所有 24+ 個 `graphify-mcp` 工具。
+SDK 封裝所有 24+ 個 `graphify` 工具。
 
 ### 核心圖譜
 
@@ -138,13 +138,13 @@ SDK 封裝所有 24+ 個 `graphify-mcp` 工具。
 ## 架構
 
 ```
-Go 應用 → GraphifyClient → Transport (Stdio/JSON-RPC) → graphify-mcp (Rust)
+Go 應用 → GraphifyClient → Transport (Stdio/JSON-RPC) → graphify (Rust)
 ```
 
 - **零外部依賴**：僅使用 Go 標準函式庫
 - **同步 API**：單執行緒、透過 stdio 請求-回應
 - **自動工作區金鑰**：從專案路徑推導（對應 Rust crc32 邏輯）
-- **延遲啟動**：首次請求時才啟動 `graphify-mcp` 子程序
+- **延遲啟動**：首次請求時才啟動 `graphify` 子程序
 
 ## 專案結構
 
