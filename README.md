@@ -139,12 +139,12 @@ The SDK wraps all 24+ `graphify` tools.
 ## Architecture
 
 ```
-Go App → GraphifyClient → Transport (Stdio/JSON-RPC) → graphify (Rust)
+Go App → Client → Transport (Stdio/JSON-RPC) → graphify (Rust)
 ```
 
 - **Zero external dependencies**: uses only the Go standard library
 - **Synchronous API**: single-threaded, request-response over stdio
-- **Auto workspace key**: derives from project path (mirrors Rust crc32 logic)
+- **Auto workspace key**: derives from project path via CRC32 (cross-SDK consistent)
 - **Lazy process start**: transport spawns `graphify` on first request
 
 ## Project Structure
