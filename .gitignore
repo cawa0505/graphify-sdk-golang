@@ -1,0 +1,18 @@
+# Go 編譯產物
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+# 除錯符號
+*.sym
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+# 系統
+.DS_Store
+Thumbs.db
